@@ -1,3 +1,10 @@
 body {
-    background-color: blue;
+    background-color: #AAE3E2;
+}
+
+.intro {
+    flex: content;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
 }
