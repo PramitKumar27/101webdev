@@ -1,10 +1,15 @@
 body {
-    background-color: #AAE3E2;
+    background-color: #F2CD5C;
+    font-family: 'Rajdhani', sans-serif;
+    color: #400E32;
+}
+
+.image{
+    width: 400px;
 }
 
 .intro {
     flex: content;
     align-items: center;
-    justify-content: center;
-    align-items: center;
+    
 }
