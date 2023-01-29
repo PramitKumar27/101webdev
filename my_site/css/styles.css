@@ -1,16 +1,14 @@
 body {
     margin: 0;
-    background-color: #F2CD5C;
-    font-family: 'Rajdhani', sans-serif;
-    color: #400E32;
+    background-color: #D61355;
+    font-family: 'Playfair Display', serif;
+    color: #FCE22A;
 }
 
 .image{
     width: 50%;
 }
 
-.intro {
-    display: flex;
-    flex-wrap: nowrap;
-
+.image1 {
+    width: 30%;
 }
