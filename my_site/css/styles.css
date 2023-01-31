@@ -6,14 +6,23 @@ body {
 }
 
 .image{
-    width: 50%;
+    width: 20%;
 }
 
 .image1 {
-    width: 30%;
+    width: 20%;
 }
 
-.intro {
+.first {
     display: flex;
-    align-items: center;
+    justify-content: center;
+}
+
+.second {
+    text-align: center;
+}
+
+.third {
+    display: flex;
+    justify-content: center;
 }
