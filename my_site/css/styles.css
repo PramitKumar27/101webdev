@@ -13,16 +13,3 @@ body {
     width: 20%;
 }
 
-.first {
-    display: flex;
-    justify-content: center;
-}
-
-.second {
-    text-align: center;
-}
-
-.third {
-    display: flex;
-    justify-content: center;
-}
