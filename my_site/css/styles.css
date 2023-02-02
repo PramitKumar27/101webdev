@@ -6,11 +6,22 @@ body {
     text-align: center;
 }
 
-.image{
+img {
     width: 20%;
 }
 
 .image1 {
-    width: 20%;
+    position: relative;
+    right: 50px;
+}
+
+.image2{
+    position: relative;
+    left: 50px;
+}
+
+.image3 {
+    position: relative;
+    bottom: 10px;
 }
 
