@@ -1,29 +1,10 @@
 body {
     margin: 0;
-    font-family: 'Playfair Display', serif;
+    background-color: #fff;
+    font-family: 'Gloock', serif;
     text-align: center;
 }
 
-img {
-    width: 20%;
+.middle {
+    background-color: #2B2B2B;
 }
-
-.top {
-    background-color: #9b0921;
-}
-
-.image1 {
-    position: relative;
-    right: 50px;
-}
-
-.image2{
-    position: relative;
-    left: 50px;
-}
-
-.image3 {
-    position: relative;
-    bottom: 10px;
-}
-
