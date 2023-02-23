@@ -17,6 +17,7 @@ p,h3 {
 }
 
 .top {
+    padding: 20px 0px;
     font-family: 'Mynerve', cursive;
     font-size: 60px;
 }
@@ -31,8 +32,13 @@ p,h3 {
 }
 
 .middle {
+    padding: 20px 0px;
     background-color: #2B2B2B;
     color: white;
+}
+
+.bottom {
+    padding: 20px 0px;
 }
 
 .foot {
