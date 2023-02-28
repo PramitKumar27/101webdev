@@ -12,8 +12,7 @@ p,h3 {
 
 .doobry {
     position: relative;
-    top: 50px;
-    width: 300px;
+    bottom: 60px;
 }
 
 .top {
@@ -46,4 +45,9 @@ p,h3 {
     margin: 0;
     color: white;
     background-color: #2B2B2B;
+}
+
+.name {
+    color: rgb(255, 255, 71);
+    font-weight: 900;
 }
