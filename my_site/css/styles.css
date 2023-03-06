@@ -23,25 +23,32 @@ p,h3 {
 
 .topimage {
     border-radius: 50%;
-    width: 10%;
+    width: 14%;
+    float: left;
+    position: relative;
+    left: 200px;
+    bottom: 20px;
 }
 
 .bottomimage {
-    width: 10%;
+    width: 14%;
+    float: left;
 }
 
 .middle {
-    padding: 10px 0px 10px 0px;
+    padding: 50px 0px 50px 0px;
     background-color: #2B2B2B;
     color: white;
-}
-
-.intro {
     margin: 100px auto 100px auto;
 }
 
+.intro {
+    padding-bottom: 20px;
+}
+
+
 .bottom {
-    padding: 10px 0px 10px 0px;
+    padding: 0px 0px 10px 0px;
 }
 
 .foot {
@@ -59,14 +66,16 @@ p,h3 {
 .skills {
     width: 50%;
     margin: 100px auto 100px auto;
+    text-align: left;
 }
 
 div.skills > h3{
     font-weight: bolder;
     font-size: 30px;
+    padding-left: 150px;
 }
 
 .info-skills {
-    text-align: left;
     line-height: 2;
+    padding-left: 150px;
 }
