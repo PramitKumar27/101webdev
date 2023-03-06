@@ -51,3 +51,12 @@ p,h3 {
     color: rgb(255, 255, 71);
     font-weight: 900;
 }
+
+.skills {
+    width: 50%;
+    margin: 100px auto 100px auto;
+}
+
+h3.skills{
+    color: red;
+}
