@@ -7,7 +7,6 @@ body {
 
 p,h3 {
     font-family: 'Raleway', sans-serif;
-    font-weight: 800;
 }
 
 .doobry {
@@ -31,13 +30,17 @@ p,h3 {
 }
 
 .middle {
-    padding: 20px 50px;
+    padding: 10px 0px 10px 0px;
     background-color: #2B2B2B;
     color: white;
 }
 
+.intro {
+    margin: 100px auto 100px auto;
+}
+
 .bottom {
-    padding: 20px 50px;
+    padding: 10px 0px 10px 0px;
 }
 
 .foot {
@@ -57,6 +60,7 @@ p,h3 {
     margin: 100px auto 100px auto;
 }
 
-h3.skills{
-    color: red;
+div.skills > h3{
+    font-weight: bolder;
+    font-size: 30px;
 }
