@@ -24,83 +24,84 @@ Book.instances = {};  // initially an empty collection (a map)
  ***  Class-level ("static") storage management methods **
  *********************************************************/
 // Convert record/row to object
-Book.convertRec2Obj = function (bookRec) {
-  const book = new Book( bookRec);
-  return book;
+Movie.convertRec2Obj = function (MovieRec) {
+  const movie = new Movie( MovieRec);
+  return movie;
 };
 // Load the book table from Local Storage
-Book.retrieveAll = function () {
-  var booksString="";  
+Movie.retrieveAll = function () {
+  var MoviesString="";  
   try {
-    if (localStorage.getItem("books")) {
-      booksString = localStorage.getItem("books");
+    if (localStorage.getItem("movies")) {
+      MoviesString = localStorage.getItem("movies");
     }
   } catch (e) {
     alert("Error when reading from Local Storage\n" + e);
   }
-  if (booksString) {
-    const books = JSON.parse( booksString);
-    const keys = Object.keys( books);
-    console.log(`${keys.length} books loaded.`);
+  if (MoviesString) {
+    const movies = JSON.parse( MoviesString);
+    const keys = Object.keys( movies);
+    console.log(`${keys.length} movies loaded.`);
     for (let i=0; i < keys.length; i++) {
       let key = keys[i];
-      Book.instances[key] = Book.convertRec2Obj( books[key]);
+      Movie.instances[key] = Movie.convertRec2Obj( movies[key]);
     }
   }
 };
 //  Save all book objects to Local Storage
-Book.saveAll = function () {
+Movie.saveAll = function () {
   var error = false;
   try {
-    const booksString = JSON.stringify( Book.instances);
-    localStorage.setItem("books", booksString);
+    const MoviesString = JSON.stringify( Movie.instances);
+    localStorage.setItem("movies", MoviesString);
   } catch (e) {
     alert("Error when writing to Local Storage\n" + e);
     error = true;
   }
   if (!error) {
-    const nmrOfBooks = Object.keys( Book.instances).length;
-    console.log(`${nmrOfBooks} books saved.`);
+    const nmrOfMovies = Object.keys( Movie.instances).length;
+    console.log(`${nmrOfMovies} movies saved.`);
   }
 };
 //  Create a new book row
-Book.add = function (slots) {
-  const book = new Book( slots);
+Movie.add = function (slots) {
+  const movie = new Movie( slots);
   // add book to the Book.instances collection
-  Book.instances[slots.isbn] = book;
-  console.log(`Book ${slots.isbn} created!`);
+  Movie.instances[slots.isbn] = movie;
+  console.log(`Movie ${slots.isbn} created!`);
 };
 //  Update an existing book row
-Book.update = function (slots) {
-  const book = Book.instances[slots.isbn],
+Movie.update = function (slots) {
+  const movie = Movie.instances[slots.isbn],
         year = parseInt( slots.year);  // convert string to integer
-  if (book.title !== slots.title) book.title = slots.title;
-  if (book.year !== year) book.year = year;
-  console.log(`Book ${slots.isbn} modified!`);
+  if (movie.title !== slots.title) movie.title = slots.title;
+  if (movie.year !== year) movie.year = year;
+  console.log(`Movie ${slots.isbn} modified!`);
 };
 //  Delete a book row from persistent storage
-Book.destroy = function (isbn) {
-  if (Book.instances[isbn]) {
-    console.log(`Book ${isbn} deleted`);
-    delete Book.instances[isbn];
+Movie.destroy = function (isbn) {
+  if (Movie.instances[isbn]) {
+    console.log(`Movie ${isbn} deleted`);
+    delete Movie.instances[isbn];
   } else {
-    console.log(`There is no book with ISBN ${isbn} in the database!`);
+    console.log(`There is no movie with ID ${isbn} in the database!`);
   }
 };
 /*******************************************
 *** Auxiliary methods for testing **********
 ********************************************/
 //  Create and save test data
-Book.generateTestData = function () {
-  Book.instances["006251587X"] = new Book({isbn:"006251587X", title:"Weaving the Web", year:2000});
-  Book.instances["0465026567"] = new Book({isbn:"0465026567", title:"Gödel, Escher, Bach", year:1999});
-  Book.instances["0465030793"] = new Book({isbn:"0465030793", title:"I Am A Strange Loop", year:2008});
-  Book.saveAll();
+Movie.generateTestData = function () {
+  Movie.instances["1"] = new Movie({isbn:"1", title:"Pulp Fiction", year:"1994-05-12"});
+  Movie.instances["2"] = new Movie({isbn:"2", title:"Star Wars", year:"1977-05-25"});
+  Movie.instances["3"] = new Movie({isbn:"3", title:"Casablanca", year:"1943-01-23"});
+  Movie.instances["4"] = new Movie({isbn:"4", title:"The Godfather", year:"1972-03-15"});
+  Movie.saveAll();
 };
 //  Clear data
-Book.clearData = function () {
-  if (confirm("Do you really want to delete all book data?")) {
-    Book.instances = {};
-    localStorage.setItem("books", "{}");
+Movie.clearData = function () {
+  if (confirm("Do you really want to delete all movie data?")) {
+    Movie.instances = {};
+    localStorage.setItem("movies", "{}");
   }
 };
