@@ -3,8 +3,8 @@
 ************************************************/
 pl.v.deleteMovie = {
   setupUserInterface: function () {
-    const deleteButton = document.forms["Movie"].commit,
-          selectEl = document.forms["Movie"].selectMovie;
+    const deleteButton = document.forms["commit"].commit,
+          selectEl = document.forms["commit"].selectMovie;
     // load all book objects
     Movie.retrieveAll();
     // populate the selection list with books
@@ -23,7 +23,7 @@ pl.v.deleteMovie = {
   },
   // Event handler for deleting a book
   handleDeleteButtonClickEvent: function () {
-    const selectEl = document.forms["Movie"].selectMovie,
+    const selectEl = document.forms["commit"].selectMovie,
           isbn = selectEl.value;
     if (isbn) {
       Movie.destroy( isbn);

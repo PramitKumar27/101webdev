@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <title>Minimal Plain JS App</title>
   <script src="src/c/initialize.js"></script>
-  <script src="src/m/movie.js"></script>
+  <script src="src/m/Movie.js"></script>
 </head>
 
 <body>
@@ -21,27 +21,27 @@
       href="https://web-engineering.info/tech/JsFrontendApp/minimal-tutorial.html">tutorial</a>,
     is the 1st example app of our incremental sequence of six examples of
     <a href="https://web-engineering.info/JsFrontendApp">Plain JS Front-End Web Apps</a>, which are also
-    discussed in the acompanying movie <a href="https://web-engineering.info/JsFrontendApp-movie">Building
+    discussed in the acompanying Movie <a href="https://web-engineering.info/JsFrontendApp-Movie">Building
       Front-End Web Apps with Plain JavaScript</a>.
     This app supports the following operations:</p>
   <menu>
-    <li><a href="createMovie.html"><button type="button">Create</button></a> a new movie record</li>
-    <li><a href="retrieveAndListAllMovies.html"><button type="button">Retrieve</button></a> and list all movie records
+    <li><a href="createMovie.html"><button type="button">Create</button></a> a new Movie record</li>
+    <li><a href="retrieveAndListAllMovies.html"><button type="button">Retrieve</button></a> and list all Movie records
     </li>
-    <li><a href="updateMovie.html"><button type="button">Update</button></a> a movie record</li>
-    <li><a href="deleteMovie.html"><button type="button">Delete</button></a> a movie record</li>
+    <li><a href="updateMovie.html"><button type="button">Update</button></a> a Movie record</li>
+    <li><a href="deleteMovie.html"><button type="button">Delete</button></a> a Movie record</li>
     <hr />
-    <li><button type="button" onclick="movie.clearData()">Clear</button> database</li>
-    <li><button type="button" onclick="movie.generateTestData()">Generate</button> test data</li>
+    <li><button type="button" onclick="Movie.clearData()">Clear</button> database</li>
+    <li><button type="button" onclick="Movie.generateTestData()">Generate</button> test data</li>
   </menu>
-  <p>For playing with the app, you may first want to <button type="button" onclick="movie.generateTestData()">Generate
+  <p>For playing with the app, you may first want to <button type="button" onclick="Movie.generateTestData()">Generate
       test data</button> and then view it with <a href="retrieveAndListAllMovies.html"><button type="button">Retrieve
         and
-        list all movies</button></a>.
+        list all Movies</button></a>.
     For observing the internal status and error messages, turn on the JavaScript console.</p>
   <p>This minimal version of our JavaScript front-end data management application only includes a minimum of the overall
     functionality
-    required for a complete app. It takes care of only one object type ("movies") and supports the four
+    required for a complete app. It takes care of only one object type ("Movies") and supports the four
     standard data management operations
     (<strong>C</strong>reate/<strong>R</strong>etrieve/<strong>U</strong>pdate/<strong>D</strong>elete),
     but it needs to be enhanced by styling the user interface with CSS rules and by adding further important parts
@@ -54,8 +54,10 @@
       Brandenburg University of Technology, Germany. The code of this tutorial web app is licensed under
       <a rel="license" href="https://www.codeproject.com/info/cpol10.aspx">The Code Project Open License (CPOL)</a>,
       implying that the code is provided "as-is", can be modified to create derivative works, can be redistributed,
-      and can be used in commercial applications, but the associated article or movie chapter must not be
+      and can be used in commercial applications, but the associated article or Movie chapter must not be
       distributed or republished without the copyright holder's consent.
     </div>
   </footer>
 </body>
+
+</html>

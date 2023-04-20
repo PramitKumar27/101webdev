@@ -10,7 +10,7 @@
  * @constructor
  * @param {{isbn: string, title: string, year: number}} slots - Object creation slots.
  */
-function Book( slots) {
+function Movie( slots) {
   this.isbn = slots.isbn;
   this.title = slots.title;
   this.year = slots.year;
@@ -18,33 +18,33 @@ function Book( slots) {
 /***********************************************
  ***  Class-level ("static") properties  *******
  ***********************************************/
-Book.instances = {};  // initially an empty collection (a map)
+Movie.instances = {};  // initially an empty collection (a map)
 
 /*********************************************************
  ***  Class-level ("static") storage management methods **
  *********************************************************/
 // Convert record/row to object
 Movie.convertRec2Obj = function (MovieRec) {
-  const movie = new Movie( MovieRec);
+  const movie = new Movie(MovieRec);
   return movie;
 };
 // Load the book table from Local Storage
 Movie.retrieveAll = function () {
   var MoviesString="";  
   try {
-    if (localStorage.getItem("movies")) {
-      MoviesString = localStorage.getItem("movies");
+    if (localStorage.getItem("Movies")) {
+      MoviesString = localStorage.getItem("Movies");
     }
   } catch (e) {
     alert("Error when reading from Local Storage\n" + e);
   }
   if (MoviesString) {
-    const movies = JSON.parse( MoviesString);
-    const keys = Object.keys( movies);
-    console.log(`${keys.length} movies loaded.`);
+    const Movies = JSON.parse( MoviesString);
+    const keys = Object.keys( Movies);
+    console.log(`${keys.length} Movies loaded.`);
     for (let i=0; i < keys.length; i++) {
       let key = keys[i];
-      Movie.instances[key] = Movie.convertRec2Obj( movies[key]);
+      Movie.instances[key] = Movie.convertRec2Obj( Movies[key]);
     }
   }
 };
@@ -53,14 +53,14 @@ Movie.saveAll = function () {
   var error = false;
   try {
     const MoviesString = JSON.stringify( Movie.instances);
-    localStorage.setItem("movies", MoviesString);
+    localStorage.setItem("Movies", MoviesString);
   } catch (e) {
     alert("Error when writing to Local Storage\n" + e);
     error = true;
   }
   if (!error) {
     const nmrOfMovies = Object.keys( Movie.instances).length;
-    console.log(`${nmrOfMovies} movies saved.`);
+    console.log(`${nmrOfMovies} Movies saved.`);
   }
 };
 //  Create a new book row
@@ -72,10 +72,10 @@ Movie.add = function (slots) {
 };
 //  Update an existing book row
 Movie.update = function (slots) {
-  const movie = Movie.instances[slots.isbn],
+  const Movie = Movie.instances[slots.isbn],
         year = parseInt( slots.year);  // convert string to integer
-  if (movie.title !== slots.title) movie.title = slots.title;
-  if (movie.year !== year) movie.year = year;
+  if (Movie.title !== slots.title) Movie.title = slots.title;
+  if (Movie.year !== year) Movie.year = year;
   console.log(`Movie ${slots.isbn} modified!`);
 };
 //  Delete a book row from persistent storage
@@ -84,7 +84,7 @@ Movie.destroy = function (isbn) {
     console.log(`Movie ${isbn} deleted`);
     delete Movie.instances[isbn];
   } else {
-    console.log(`There is no movie with ID ${isbn} in the database!`);
+    console.log(`There is no Movie with ID ${isbn} in the database!`);
   }
 };
 /*******************************************
@@ -100,8 +100,8 @@ Movie.generateTestData = function () {
 };
 //  Clear data
 Movie.clearData = function () {
-  if (confirm("Do you really want to delete all movie data?")) {
+  if (confirm("Do you really want to delete all Movie data?")) {
     Movie.instances = {};
-    localStorage.setItem("movies", "{}");
+    localStorage.setItem("Movies", "{}");
   }
 };
