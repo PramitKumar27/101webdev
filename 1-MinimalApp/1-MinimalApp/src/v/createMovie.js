@@ -1,10 +1,10 @@
 /***********************************************
-***  Methods for the use case createBook  ******
+***  Methods for the use case createMovie  ******
 ************************************************/
 pl.v.createMovie = {
   setupUserInterface: function () {
     const saveButton = document.forms["Movie"].commit;
-    // load all book objects
+    // load all movie objects
     Movie.retrieveAll();
     // set an event handler for the submit/save button
     saveButton.addEventListener("click", 

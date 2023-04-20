@@ -1,13 +1,13 @@
 /***********************************************
-***  Methods for the use case "delete book"  ***
+***  Methods for the use case "delete movie"  ***
 ************************************************/
 pl.v.deleteMovie = {
   setupUserInterface: function () {
     const deleteButton = document.forms["commit"].commit,
           selectEl = document.forms["commit"].selectMovie;
-    // load all book objects
+    // load all movie objects
     Movie.retrieveAll();
-    // populate the selection list with books
+    // populate the selection list with movie
     for (let key of Object.keys( Movie.instances)) {
       const movie = Movie.instances[key];
       const optionEl = document.createElement("option");
@@ -21,13 +21,13 @@ pl.v.deleteMovie = {
     // Set a handler for the event when the browser window/tab is closed
     window.addEventListener("beforeunload", Movie.saveAll);
   },
-  // Event handler for deleting a book
+  // Event handler for deleting a movie
   handleDeleteButtonClickEvent: function () {
     const selectEl = document.forms["commit"].selectMovie,
           isbn = selectEl.value;
     if (isbn) {
       Movie.destroy( isbn);
-      // remove deleted book from select options
+      // remove deleted movie from select options
       selectEl.remove( selectEl.selectedIndex);
     }
   }

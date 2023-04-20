@@ -28,7 +28,7 @@ Movie.convertRec2Obj = function (MovieRec) {
   const movie = new Movie(MovieRec);
   return movie;
 };
-// Load the book table from Local Storage
+// Load the movie table from Local Storage
 Movie.retrieveAll = function () {
   var MoviesString="";  
   try {
@@ -48,7 +48,7 @@ Movie.retrieveAll = function () {
     }
   }
 };
-//  Save all book objects to Local Storage
+//  Save all movie objects to Local Storage
 Movie.saveAll = function () {
   var error = false;
   try {
@@ -63,22 +63,22 @@ Movie.saveAll = function () {
     console.log(`${nmrOfMovies} Movies saved.`);
   }
 };
-//  Create a new book row
+//  Create a new movie row
 Movie.add = function (slots) {
   const movie = new Movie( slots);
-  // add book to the Book.instances collection
+  // add movie to the Movie.instances collection
   Movie.instances[slots.isbn] = movie;
   console.log(`Movie ${slots.isbn} created!`);
 };
-//  Update an existing book row
+//  Update an existing movie row
 Movie.update = function (slots) {
-  const Movie = Movie.instances[slots.isbn],
-        year = parseInt( slots.year);  // convert string to integer
-  if (Movie.title !== slots.title) Movie.title = slots.title;
-  if (Movie.year !== year) Movie.year = year;
+  const movie = Movie.instances[slots.isbn],
+         year1 = slots.year;  // convert string to integer
+  if (movie.title !== slots.title) movie.title = slots.title;
+  if (movie.year !== year1) movie.year = year1;
   console.log(`Movie ${slots.isbn} modified!`);
 };
-//  Delete a book row from persistent storage
+//  Delete a movie row from persistent storage
 Movie.destroy = function (isbn) {
   if (Movie.instances[isbn]) {
     console.log(`Movie ${isbn} deleted`);
