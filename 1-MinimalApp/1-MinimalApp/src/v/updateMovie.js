@@ -31,9 +31,9 @@ pl.v.updateMovie = {
           key = selectMovieEl.value;
     if (key) {
       const movie = Movie.instances[key];
-      formEl.isbn.value = movie.isbn;
+      formEl.movieId.value = movie.movieId;
       formEl.title.value = movie.title;
-      formEl.year.value = movie.year;
+      formEl.releaseDate.value = movie.releaseDate;
     } else {
       formEl.reset();
     }
@@ -42,9 +42,9 @@ pl.v.updateMovie = {
   handleSaveButtonClickEvent: function () {
     const formEl = document.forms["commit"],
         selectMovieEl = formEl.selectMovie;
-    const slots = { isbn: formEl.isbn.value,
+    const slots = { movieId: formEl.movieId.value,
         title: formEl.title.value,
-        year: formEl.year.value
+        releaseDate: formEl.releaseDate.value
     };
     Movie.update(slots);
     // update the selection list option element
