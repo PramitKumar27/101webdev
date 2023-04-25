@@ -23,9 +23,11 @@ pl.v.updateMovie = {
     saveButton.addEventListener("click",
         pl.v.updateMovie.handleSaveButtonClickEvent);
     // handle the event when the browser window/tab is closed
+
     window.addEventListener("beforeunload", Movie.saveAll);
   },
   handleMovieSelectionEvent: function () {
+ 
     const formEl = document.forms["commit"],
           selectMovieEl = formEl.selectMovie,
           key = selectMovieEl.value;
