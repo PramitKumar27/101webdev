@@ -43,9 +43,9 @@ Movie.checkMovieId = function (id) {
   if (!id) return new NoConstraintViolation();
   else if (typeof(id) !== "string" || id.trim() === "") {
     return new RangeConstraintViolation("The Movie ID must be a non-empty string!");
-  } else if (!(/\b\d{9}(\d|X)\b/.test( id))) {
-    return new PatternConstraintViolation(
-        'The Movie ID must be a 10-digit string or a 9-digit string followed by "X"!');
+  // } else if (!(/\b\d{9}(\d|X)\b/.test( id))) {
+  //   return new PatternConstraintViolation(
+  //       'The Movie ID must be a 10-digit string or a 9-digit string followed by "X"!');
   } else {
     return new NoConstraintViolation();
   }
@@ -91,14 +91,14 @@ Movie.prototype.setTitle = function (t) {
   }
 };
 Movie.checkReleaseDate = function (y) {
-  const YEAR_FIRST_MOVIE = 1895;
+  const YEAR_FIRST_MOVIE = "1895-12-28";
   if (!y) {
     return new MandatoryValueConstraintViolation(
-	    "A publication year must be provided!");
-  } else if (!isIntegerOrIntegerString( y)) {
-    return new RangeConstraintViolation("The value of year must be an integer!");
+	    "A release year must be provided!");
+  // } else if (!isIntegerOrIntegerString( y)) {
+  //   return new RangeConstraintViolation("The value of year must be an integer!");
   } else {
-    if (typeof y === "string") y = parseInt(y);
+    // if (typeof y === "string") y = parseInt(y);
     if (y < YEAR_FIRST_MOVIE || y > nextYear()) {
       return new IntervalConstraintViolation(
           `The value of year must be between ${YEAR_FIRST_MOVIE} and next year!`);
@@ -275,22 +275,22 @@ Movie.generateTestData = function () {
     Movie.instances["1"] = new Movie({
       movieId: "1",
       title: "Pulp Fiction",
-      releaseDate: 1994-05-12,
+      releaseDate: "1994-05-12",
     });
     Movie.instances["2"] = new Movie({
       movieId: "2",
       title: "Star Wars",
-      releaseDate: 1977-05-25,
+      releaseDate: "1977-05-25",
     });
     Movie.instances["3"] = new Movie({
       movieId: "3",
       title: "Casablanca",
-      releaseDate: 1943-01-23,
+      releaseDate: "1943-01-23",
     });
     Movie.instances["4"] = new Movie({
       movieId: "4",
       title: "The Godfather",
-      releaseDate: 1972-03-15,
+      releaseDate: "1972-03-15",
     });
     Movie.saveAll();
   } catch (e) {
