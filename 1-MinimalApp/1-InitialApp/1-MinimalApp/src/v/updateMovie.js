@@ -23,19 +23,17 @@ pl.v.updateMovie = {
     saveButton.addEventListener("click",
         pl.v.updateMovie.handleSaveButtonClickEvent);
     // handle the event when the browser window/tab is closed
-
     window.addEventListener("beforeunload", Movie.saveAll);
   },
   handleMovieSelectionEvent: function () {
- 
     const formEl = document.forms["commit"],
           selectMovieEl = formEl.selectMovie,
           key = selectMovieEl.value;
     if (key) {
       const movie = Movie.instances[key];
-      formEl.movieId.value = movie.movieId;
+      formEl.isbn.value = movie.isbn;
       formEl.title.value = movie.title;
-      formEl.releaseDate.value = movie.releaseDate;
+      formEl.year.value = movie.year;
     } else {
       formEl.reset();
     }
@@ -44,9 +42,9 @@ pl.v.updateMovie = {
   handleSaveButtonClickEvent: function () {
     const formEl = document.forms["commit"],
         selectMovieEl = formEl.selectMovie;
-    const slots = { movieId: formEl.movieId.value,
+    const slots = { isbn: formEl.isbn.value,
         title: formEl.title.value,
-        releaseDate: formEl.releaseDate.value
+        year: formEl.year.value
     };
     Movie.update(slots);
     // update the selection list option element

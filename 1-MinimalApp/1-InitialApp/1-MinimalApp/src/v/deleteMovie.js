@@ -12,7 +12,7 @@ pl.v.deleteMovie = {
       const movie = Movie.instances[key];
       const optionEl = document.createElement("option");
       optionEl.text = movie.title;
-      optionEl.value = movie.movieId;
+      optionEl.value = movie.isbn;
       selectEl.add( optionEl, null);
     }
     // Set an event handler for the submit/delete button
@@ -24,9 +24,9 @@ pl.v.deleteMovie = {
   // Event handler for deleting a movie
   handleDeleteButtonClickEvent: function () {
     const selectEl = document.forms["commit"].selectMovie,
-          movieId = selectEl.value;
-    if (movieId) {
-      Movie.destroy( movieId);
+          isbn = selectEl.value;
+    if (isbn) {
+      Movie.destroy( isbn);
       // remove deleted movie from select options
       selectEl.remove( selectEl.selectedIndex);
     }

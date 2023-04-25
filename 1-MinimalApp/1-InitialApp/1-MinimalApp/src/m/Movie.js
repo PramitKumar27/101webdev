@@ -8,12 +8,12 @@
 /**
  * Constructor function for the class Book 
  * @constructor
- * @param {{movieId: number, title: string, releaseDate: Date}} slots - Object creation slots.
+ * @param {{isbn: string, title: string, year: number}} slots - Object creation slots.
  */
 function Movie( slots) {
-  this.movieId = slots.movieId;
+  this.isbn = slots.isbn;
   this.title = slots.title;
-  this.releaseDate = slots.releaseDate;
+  this.year = slots.year;
 }
 /***********************************************
  ***  Class-level ("static") properties  *******
@@ -67,24 +67,24 @@ Movie.saveAll = function () {
 Movie.add = function (slots) {
   const movie = new Movie( slots);
   // add movie to the Movie.instances collection
-  Movie.instances[slots.movieId] = movie;
-  console.log(`Movie ${slots.movieId} created!`);
+  Movie.instances[slots.isbn] = movie;
+  console.log(`Movie ${slots.isbn} created!`);
 };
 //  Update an existing movie row
 Movie.update = function (slots) {
-  const movie = Movie.instances[slots.movieId],
-         releaseDate1 = slots.releaseDate;  // convert string to integer
+  const movie = Movie.instances[slots.isbn],
+         year1 = slots.year;  // convert string to integer
   if (movie.title !== slots.title) movie.title = slots.title;
-  if (movie.releaseDate !== releaseDate1) movie.releaseDate = releaseDate1;
-  console.log(`Movie ${slots.movieId} modified!`);
+  if (movie.year !== year1) movie.year = year1;
+  console.log(`Movie ${slots.isbn} modified!`);
 };
 //  Delete a movie row from persistent storage
-Movie.destroy = function (movieId) {
-  if (Movie.instances[movieId]) {
-    console.log(`Movie ${movieId} deleted`);
-    delete Movie.instances[movieId];
+Movie.destroy = function (isbn) {
+  if (Movie.instances[isbn]) {
+    console.log(`Movie ${isbn} deleted`);
+    delete Movie.instances[isbn];
   } else {
-    console.log(`There is no Movie with ID ${movieId} in the database!`);
+    console.log(`There is no Movie with ID ${isbn} in the database!`);
   }
 };
 /*******************************************
@@ -92,10 +92,10 @@ Movie.destroy = function (movieId) {
 ********************************************/
 //  Create and save test data
 Movie.generateTestData = function () {
-  Movie.instances["1"] = new Movie({movieId:"1", title:"Pulp Fiction", releaseDate:"1994-05-12"});
-  Movie.instances["2"] = new Movie({movieId:"2", title:"Star Wars", releaseDate:"1977-05-25"});
-  Movie.instances["3"] = new Movie({movieId:"3", title:"Casablanca", releaseDate:"1943-01-23"});
-  Movie.instances["4"] = new Movie({movieId:"4", title:"The Godfather", releaseDate:"1972-03-15"});
+  Movie.instances["1"] = new Movie({isbn:"1", title:"Pulp Fiction", year:"1994-05-12"});
+  Movie.instances["2"] = new Movie({isbn:"2", title:"Star Wars", year:"1977-05-25"});
+  Movie.instances["3"] = new Movie({isbn:"3", title:"Casablanca", year:"1943-01-23"});
+  Movie.instances["4"] = new Movie({isbn:"4", title:"The Godfather", year:"1972-03-15"});
   Movie.saveAll();
 };
 //  Clear data
