@@ -2,7 +2,7 @@
  * @fileOverview  View methods for the use case "create Movie"
  * @author Gerd Wagner
  */
-import Movie from "../m/Movie.mjs";
+import Movie from "../m/Movie2.mjs";
 
 const formEl = document.forms["Movie"],
       saveButton = formEl["commit"];

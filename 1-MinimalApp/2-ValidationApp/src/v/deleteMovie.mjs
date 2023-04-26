@@ -3,7 +3,7 @@
  * @author Mircea Diaconescu
  * @author Gerd Wagner
  */
-import Movie from "../m/Movie.mjs";
+import Movie from "../m/Movie2.mjs";
 import { fillSelectWithOptions } from "../../lib/util.mjs";
 
 const formEl = document.forms['Movie'],
