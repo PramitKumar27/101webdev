@@ -21,8 +21,7 @@ function Movie( slots) {
 this.movieId = ""; // string
 this.title = ""; // string
 this.releaseDate = ""; // string
-// this.edition number (int) optional
-// set properties only if constructor is invoked with an argument
+
 if (arguments.length > 0) {
 this.setMovieId( slots.movieId);
 this.setTitle( slots.title);
@@ -248,12 +247,12 @@ Movie.generateTestData = function () {
     Movie.instances["3"] = new Movie({
       movieId: "3",
       title: "Casablanca",
-      releaseDate: "1943-01-23",
+      releaseDate: '1943-01-23',
     });
     Movie.instances["4"] = new Movie({
       movieId: "4",
       title: "The Godfather",
-      releaseDate: "1972-03-15",
+      releaseDate: '1972-03-15',
     });
     Movie.saveAll();
   } catch (e) {

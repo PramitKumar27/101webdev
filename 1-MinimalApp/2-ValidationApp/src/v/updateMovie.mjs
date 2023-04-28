@@ -35,10 +35,7 @@ formEl.releaseDate.addEventListener("input", function () {
   formEl.releaseDate.setCustomValidity(
       Movie.checkReleaseDate( formEl.releaseDate.value).message);
 });
-// formEl.edition.addEventListener("input", function () {
-//   var ed = formEl.edition.value;
-//   formEl.edition.setCustomValidity( Movie.checkEdition( ed).message);
-// });
+
 // set an event handler for the submit/save button
 saveButton.addEventListener("click", handleSaveButtonClickEvent);
 // neutralize the submit event

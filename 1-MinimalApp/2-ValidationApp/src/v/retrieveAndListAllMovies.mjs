@@ -14,5 +14,5 @@ for (let key of Object.keys( Movie.instances)) {
   row.insertCell().textContent = movie.movieId;
   row.insertCell().textContent = movie.title;
   row.insertCell().textContent = movie.releaseDate;
-  // row.insertCell().textContent = movie.edition || "";
+
 }
