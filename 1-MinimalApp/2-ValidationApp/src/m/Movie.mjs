@@ -9,7 +9,7 @@ can be modified to create derivative works, can be redistributed, and can be use
 /*
 Constructor function for the class movie
 @constructor
-@param {{movieId: Number, title: string, releaseDate: Date}} slots
+@param {{movieId: Number, title: string, releaseDate: string}} slots
 */
 import { isNonEmptyString, nextYear, isIntegerOrIntegerString, cloneObject }
 from "../../lib/util.mjs";
@@ -88,17 +88,13 @@ Movie.prototype.setTitle = function (t) {
   }
 };
 Movie.checkReleaseDate = function (y) {
-  const YEAR_FIRST_MOVIE = "1895-12-28";
-  if (!y) {
-    return new MandatoryValueConstraintViolation(
-	    "A release year must be provided!");
+  var date = new Date(y);
+  var compareDate = new Date('1895-12-28');
+  if (date < compareDate) {
+    return new RangeConstraintViolation(
+      "The movie release date needs to be greater than or equal to 1895-12-28");
   } else {
-    if (y < YEAR_FIRST_MOVIE || y > nextYear()) {
-      return new IntervalConstraintViolation(
-          `The value of year must be between ${YEAR_FIRST_MOVIE} and next year!`);
-    } else {
-      return new NoConstraintViolation();
-    }
+    return new NoConstraintViolation();
   }
 };
 Movie.prototype.setReleaseDate = function (y) {
@@ -109,6 +105,7 @@ Movie.prototype.setReleaseDate = function (y) {
     throw validationResult;
   }
 };
+
 
 /*********************************************************
 ***  Other Instance-Level Methods  ***********************
