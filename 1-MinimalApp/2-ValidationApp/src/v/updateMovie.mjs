@@ -2,7 +2,7 @@
  * @fileOverview  View methods for the use case "update Movie"
  * @author Gerd Wagner
  */
-import Movie from "../m/Movie2.mjs";
+import Movie from "../m/Movie.mjs";
 import { fillSelectWithOptions } from "../../lib/util.mjs";
 
 const formEl = document.forms["Movie"],

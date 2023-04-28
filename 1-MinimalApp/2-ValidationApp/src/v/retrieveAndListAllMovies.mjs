@@ -2,7 +2,7 @@
  * @fileOverview  Contains various view functions for the use case listMovies
  * @author Gerd Wagner
  */
-import Movie from "../m/Movie2.mjs";
+import Movie from "../m/Movie.mjs";
 
 const tableBodyEl = document.querySelector("table#movies>tbody");
 // retrieve all Movie records

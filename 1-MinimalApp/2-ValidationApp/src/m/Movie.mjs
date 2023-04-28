@@ -20,7 +20,7 @@ function Movie( slots) {
 // assign default values
 this.movieId = ""; // string
 this.title = ""; // string
-this.releaseDate = new Date(); // Date
+this.releaseDate = ""; // string
 // this.edition number (int) optional
 // set properties only if constructor is invoked with an argument
 if (arguments.length > 0) {
@@ -100,7 +100,7 @@ Movie.checkReleaseDate = function (y) {
 Movie.prototype.setReleaseDate = function (y) {
   const validationResult = Movie.checkReleaseDate( y);
   if (validationResult instanceof NoConstraintViolation) {
-    this.releaseDate = parseInt( y);
+    this.releaseDate = y;
   } else {
     throw validationResult;
   }
@@ -150,7 +150,7 @@ Movie.update = function (slots) {
       movie.setTitle( slots.title);
       updatedProperties.push("title");
     }
-    if (movie.releaseDate !== parseInt(slots.releaseDate)) {
+    if (movie.releaseDate !== slots.releaseDate) {
       movie.setReleaseDate( slots.releaseDate);
       updatedProperties.push("releaseDate");
     }
@@ -238,12 +238,12 @@ Movie.generateTestData = function () {
     Movie.instances["1"] = new Movie({
       movieId: "1",
       title: "Pulp Fiction",
-      releaseDate: "1994-05-12",
+      releaseDate: '1994-05-12',
     });
     Movie.instances["2"] = new Movie({
       movieId: "2",
       title: "Star Wars",
-      releaseDate: "1977-05-25",
+      releaseDate: '1977-05-25',
     });
     Movie.instances["3"] = new Movie({
       movieId: "3",

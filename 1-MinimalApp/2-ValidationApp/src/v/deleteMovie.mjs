@@ -3,7 +3,7 @@
  * @author Mircea Diaconescu
  * @author Gerd Wagner
  */
-import Movie from "../m/Movie2.mjs";
+import Movie from "../m/Movie.mjs";
 import { fillSelectWithOptions } from "../../lib/util.mjs";
 
 const formEl = document.forms['Movie'],
@@ -12,7 +12,7 @@ const formEl = document.forms['Movie'],
 // load all Movie records
 Movie.retrieveAll();
 // set up the Movie selection list
-fillSelectWithOptions( Movie.instances, selectMovieEl,"isbn", "title");
+fillSelectWithOptions( Movie.instances, selectMovieEl,"movieId", "title");
 // Set an event handler for the submit/delete button
 deleteButton.addEventListener("click", function () {
   const isbn = selectMovieEl.value;
