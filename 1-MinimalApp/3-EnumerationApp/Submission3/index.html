@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Submission app 2</title>
+  <link rel="stylesheet" href="css/normalize.css"/>
+  <link rel="stylesheet" href="css/main.css"/>
+
+  <script type="module">
+    import Movie from "./src/m/Movie.mjs";
+
+    const clearButton = document.getElementById("clearData"),
+      generateTestDataButtons = document.querySelectorAll("button.generateTestData");
+    // Set event handlers for the buttons "clearData" and "generateTestData"
+    clearButton.addEventListener("click", function () {
+      Movie.clearData();
+    });
+    generateTestDataButtons.forEach(function (el) {
+      el.addEventListener("click", function () {
+        Movie.generateTestData();
+      })
+    });
+  </script>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="title">
+      <h1>Submission app</h1>
+    </div>
+    <nav class="nav_menu">
+      <ul >
+        <li class="vert"><a href="create.html">CREATE</a></li>
+        <li class="vert"><a href="retrieve.html">RETRIEVE</a></li>
+        <li class="vert"><a href="update.html">UPDATE</a></li>
+        <li class="vert"><a href="delete.html">DELETE</a></li>
+      </ul>
+    </nav >
+  </div>
+</header>
+<main>
+  <menu class="crud">
+    <li><a href="create.html">Create</a> a new movie record</li>
+    <li><a href="retrieve.html">Retrieve</a> and list all movie records</li>
+    <li><a href="update.html">Update</a> a movie record</li>
+    <li><a href="delete.html">Delete</a> a movie record</li>
+  </menu>
+  <menu>
+    <li>
+      <button type="button" class="generateTestData">Generate test data</button>
+    </li>
+    <li>
+      <button type="button" id="clearData">Clear database</button>
+    </li>
+  </menu>
+</main>
+<footer>
+</footer>
+</body>
+</html>
