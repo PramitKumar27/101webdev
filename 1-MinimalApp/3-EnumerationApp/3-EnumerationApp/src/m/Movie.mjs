@@ -1,5 +1,5 @@
 /**
- * @fileOverview  The model class Book with attribute definitions and storage management methods
+ * @fileOverview  The model class Movie with attribute definitions and storage management methods
  * @author Gerd Wagner
  * @copyright Copyright 2014-2015 Gerd Wagner, Chair of Internet Technology, Brandenburg University of Technology, Germany.
  * @license This code is licensed under The Code Project Open License (CPOL), implying that the code is provided "as-is",
@@ -17,11 +17,11 @@ import Enumeration from "../../lib/Enumeration.mjs";
  */
 const MovieRatingEL = new Enumeration({"G":"General Audiences", "PG":"Parental Guidance",
     "PG13":"Not Under 13","R":"Restricted","NC17":"Not Under 17"});
-const GenreEL = new Enumeration(["Action","Animation",
+const GenreEL = new Enumeration(["Action","Animation","Crime","War","Sci-Fi","Adventure","Fantasy",
     "Comedy","Documentary","Drama","Family","Film-Noir","Horror","Musical","Romance"]);
 
 /**
- * The class Book
+ * The class Movie
  * @class
  */
 class Movie {
@@ -184,7 +184,7 @@ Movie.instances = {};
  ***  Class-level ("static") storage management methods ***
  **********************************************************/
 /**
- *  Create a new book row
+ *  Create a new Movie row
  */
 Movie.add = function (slots) {
   var movie = null;
@@ -200,7 +200,7 @@ Movie.add = function (slots) {
   }
 };
 /**
- *  Update an existing book row
+ *  Update an existing Movie row
  */
 Movie.update = function (slots) {
   var noConstraintViolated = true,
@@ -248,49 +248,49 @@ Movie.destroy = function (movieId) {
 /**
  *  Convert row to object
  */
-Movie.convertRec2Obj = function (bookRow) {
-  var book={};
+Movie.convertRec2Obj = function (movieRow) {
+  var movie={};
   try {
-    book = new Book( bookRow);
+    movie = new Movie( movieRow);
   } catch (e) {
-    console.log(`${e.constructor.name} while deserializing a book row: ${e.message}`);
+    console.log(`${e.constructor.name} while deserializing a movie row: ${e.message}`);
   }
-  return book;
+  return movie;
 };
 /**
- *  Load all book table rows and convert them to objects
+ *  Load all Movie table rows and convert them to objects
  */
-Book.retrieveAll = function () {
-  var booksString="";
+Movie.retrieveAll = function () {
+  var moviesString="";
   try {
-    if (localStorage["books"]) {
-      booksString = localStorage["books"];
+    if (localStorage["movies"]) {
+      moviesString = localStorage["movies"];
     }
   } catch (e) {
     alert("Error when reading from Local Storage\n" + e);
   }
-  if (booksString) {
-    const books = JSON.parse( booksString);
-    console.log(`${Object.keys( books).length} books loaded.`);
-    for (let key of Object.keys( books)) {
-      Book.instances[key] = Book.convertRec2Obj( books[key]);
+  if (moviesString) {
+    const movies = JSON.parse( moviesString);
+    console.log(`${Object.keys( movies).length} movies loaded.`);
+    for (let key of Object.keys( movies)) {
+      Movie.instances[key] = Movie.convertRec2Obj( movies[key]);
     }
   }
 };
 /**
- *  Save all book objects
+ *  Save all Movie objects
  */
-Book.saveAll = function () {
+Movie.saveAll = function () {
   var error=false;
-  const nmrOfBooks = Object.keys( Book.instances).length;
+  const nmrOfMovies = Object.keys( Movie.instances).length;
   try {
-    const booksString = JSON.stringify( Book.instances);
-    localStorage["books"] = booksString;
+    const moviesString = JSON.stringify( Movie.instances);
+    localStorage["movies"] = moviesString;
   } catch (e) {
     alert("Error when writing to Local Storage\n" + e);
     error = true;
   }
-  if (!error) console.log(`${nmrOfBooks} book records saved.`);
+  if (!error) console.log(`${nmrOfMovies} movie records saved.`);
 };
 /*******************************************
  *** Auxiliary methods for testing **********
@@ -298,36 +298,49 @@ Book.saveAll = function () {
 /**
  *  Create and save test data
  */
-Book.generateTestData = function () {
+Movie.generateTestData = function () {
   try {
-    Book.instances["006251587X"] = new Book({
-      isbn: "006251587X",
-      title: "Weaving the Web",
-      originalLanguage: LanguageEL.EN,
-      otherAvailableLanguages: [LanguageEL.DE, LanguageEL.FR],
-      category: BookCategoryEL.NOVEL,
-      publicationForms: [
-        PublicationFormEL.EPUB,
-        PublicationFormEL.PDF
+    Movie.instances["1"] = new Movie({
+      movieId: "1",
+      title: "Pulp Fiction",
+      movieRating: MovieRatingEL.R,
+      genre: [
+        GenreEL.Crime,
+        GenreEL.Drama
       ]
     });
-    Book.instances["0465026567"] = new Book({
-      isbn: "0465026567",
-      title: "Gödel, Escher, Bach",
-      originalLanguage: LanguageEL.DE,
-      otherAvailableLanguages: [LanguageEL.FR],
-      category: BookCategoryEL.OTHER,
-      publicationForms: [PublicationFormEL.PDF]
+    Movie.instances["2"] = new Movie({
+      movieId: "2",
+      title: "Star wars",
+      movieRating: MovieRatingEL.PG,
+      genre: [
+        GenreEL.Action,
+        GenreEL.Adventure,
+        GenreEL.Fantasy,
+        GenreEL.Sci-fi
+      ]
     });
-    Book.instances["0465030793"] = new Book({
-      isbn: "0465030793",
-      title: "I Am A Strange Loop",
-      originalLanguage: LanguageEL.EN,
-      otherAvailableLanguages: [],
-      category: BookCategoryEL.TEXTBOOK,
-      publicationForms: [PublicationFormEL.EPUB]
+    Movie.instances["3"] = new Movie({
+      movieId: "3",
+      title: "Casablanca",
+      movieRating: MovieRatingEL.PG,
+      genre: [
+        GenreEL.Drama,
+        GenreEL.Film-Noir,
+        GenreEL.Romance,
+        GenreEL.War
+      ]
     });
-    Book.saveAll();
+    Movie.instances["4"] = new Movie({
+      movieId: "4",
+      title: "The Godfather",
+      movieRating: MovieRatingEL.R,
+      genre: [
+        GenreEL.Crime,
+        GenreEL.Drama
+      ]
+    });
+    Movie.saveAll();
   } catch (e) {
     console.log(`${e.constructor.name} : ${e.message}`);
   }
@@ -335,11 +348,11 @@ Book.generateTestData = function () {
 /**
  * Clear data
  */
-Book.clearData = function () {
-  if (confirm( "Do you really want to delete all book data?")) {
+Movie.clearData = function () {
+  if (confirm( "Do you really want to delete all movie data?")) {
     try {
-      Book.instances = {};
-      localStorage["books"] = "{}";
+      Movie.instances = {};
+      localStorage["movies"] = "{}";
       console.log( "All data cleared.");
     } catch (e) {
       console.log( `${e.constructor.name} : ${e.message}`);
@@ -347,5 +360,5 @@ Book.clearData = function () {
   }
 };
 
-export default Book;
-export { LanguageEL, BookCategoryEL, PublicationFormEL };
+export default Movie;
+export { MovieRatingEL, GenreEL };
