@@ -60,10 +60,10 @@ validationResult = new NoConstraintViolation();
 }
 return validationResult;
 }
-  set movieId( n) {
+  set movieId( id) {
     const validationResult = Movie.checkMovieIdAsId( id);
 if (validationResult instanceof NoConstraintViolation) {
-this.movieId = id;
+this._movieId = id;
  } else {
     throw validationResult;
   }
@@ -83,7 +83,7 @@ this.movieId = id;
   set title( t) {
     var validationResult = Movie.checkTitle( t);
   if (validationResult instanceof NoConstraintViolation) {
-    this.title = t;
+    this._title = t;
   } else {
     throw validationResult;
   }
@@ -128,12 +128,12 @@ this.movieId = id;
       return new NoConstraintViolation();
     }
   }
-  static checkGenre( movieGenre) {
+  static checkGenres( movieGenre) {
     if (!movieGenre || (Array.isArray( movieGenre) &&
       movieGenre.length === 0)) {
       return new MandatoryValueConstraintViolation(
         "No genre provided!");
-    } else if (!Array.isArray( genre)) {
+    } else if (!Array.isArray( movieGenre)) {
       return new RangeConstraintViolation(
         "The value of Genre must be an array!");
     } else {
@@ -147,7 +147,7 @@ this.movieId = id;
     }
   }
   set genre( movieGenre) {
-    const validationResult = Movie.checkGenre( movieGenre);
+    const validationResult = Movie.checkGenres( movieGenre);
     if (validationResult instanceof NoConstraintViolation) {
       this._genre = movieGenre;
     } else {
@@ -305,8 +305,8 @@ Movie.generateTestData = function () {
       title: "Pulp Fiction",
       movieRating: MovieRatingEL.R,
       genre: [
-        GenreEL.Crime,
-        GenreEL.Drama
+        GenreEL.CRIME,
+        GenreEL.DRAMA
       ]
     });
     Movie.instances["2"] = new Movie({
@@ -314,10 +314,9 @@ Movie.generateTestData = function () {
       title: "Star wars",
       movieRating: MovieRatingEL.PG,
       genre: [
-        GenreEL.Action,
-        GenreEL.Adventure,
-        GenreEL.Fantasy,
-        GenreEL.Sci-fi
+        GenreEL.ACTION,
+        GenreEL.ADVENTURE,
+        GenreEL.FANTASY,
       ]
     });
     Movie.instances["3"] = new Movie({
@@ -325,10 +324,9 @@ Movie.generateTestData = function () {
       title: "Casablanca",
       movieRating: MovieRatingEL.PG,
       genre: [
-        GenreEL.Drama,
-        GenreEL.Film-Noir,
-        GenreEL.Romance,
-        GenreEL.War
+        GenreEL.DRAMA,
+        GenreEL.ROMANCE,
+        GenreEL.WAR
       ]
     });
     Movie.instances["4"] = new Movie({
@@ -336,8 +334,8 @@ Movie.generateTestData = function () {
       title: "The Godfather",
       movieRating: MovieRatingEL.R,
       genre: [
-        GenreEL.Crime,
-        GenreEL.Drama
+        GenreEL.CRIME,
+        GenreEL.DRAMA
       ]
     });
     Movie.saveAll();

@@ -26,16 +26,9 @@ formEl.movieId.addEventListener("input", function () {
   formEl.movieId.setCustomValidity( Movie.checkMovieIdAsId( formEl.movieId.value).message);
 });
 formEl.title.addEventListener("input", function () {
-  formEl.title.setCustomValidity( Book.checkTitle( formEl.title.value).message);
+  formEl.title.setCustomValidity( Movie.checkTitle( formEl.title.value).message);
 });
-/*
-// mandatory value check if otherAvailableLanguages would be mandatory
-otherAvailLangSelEl.addEventListener("change", function () {
-  otherAvailLangSelEl.setCustomValidity(
-      (otherAvailLangSelEl.selectedOptions.length === 0) ?
-          "At least one value must be selected!":"" );
-});
-*/
+
 // mandatory value check
 movieRatingFieldsetEl.addEventListener("click", function () {
   formEl.movieRating[0].setCustomValidity(
@@ -70,7 +63,7 @@ function handleSaveButtonClickEvent() {
 
   // set error messages in case of constraint violations
   formEl.movieId.setCustomValidity( Movie.checkMovieIdAsId( slots.movieId).message);
-  formEl.title.setCustomValidity( Book.checkTitle( slots.title).message);
+  formEl.title.setCustomValidity( Movie.checkTitle( slots.title).message);
   formEl.movieRating[0].setCustomValidity(
       Movie.checkMovieRating( slots.movieRating).message);
   formEl.genre[0].setCustomValidity(
